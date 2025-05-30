@@ -1,0 +1,418 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  background-color: #ffffff;
+  color: #333;
+  font-size: 14px;
+  font-family: Quotes, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.c-p {
+  cursor: pointer;
+}
+
+.v-a-middle {
+  vertical-align: middle;
+}
+
+.page-full {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.over-y {
+  height: 100%;
+  overflow-y: auto;
+}
+
+.over-x {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.no-warp {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+$i: 1;
+
+@while $i<=100 {
+  .no-warp-#{$i} {
+    overflow: hidden; //溢出内容隐藏
+    text-overflow: ellipsis; //文本溢出部分用省略号表示
+    text-overflow: -o-ellipsis-lastline;
+    display: -webkit-box; //特别显示模式
+    line-clamp: #{$i};
+    -webkit-line-clamp: #{$i}; //行数
+    -webkit-box-orient: vertical; //盒子中内容竖直排列
+  }
+
+  $i: $i + 1;
+}
+
+.bg-white {
+  background-color: #fff;
+}
+
+.bg-gray {
+  background-color: #f8f8f8;
+}
+
+.bg-ashy {
+  background-color: #efefef;
+}
+
+.bg-primary {
+  background-color: #455fff;
+}
+
+.bg-primary-el {
+  background-color: var(--el-color-primary);
+}
+
+.bg-warning-el {
+  background-color: var(--el-color-warning);
+}
+
+.bg-info-el {
+  background-color: var(--el-color-info);
+}
+
+.bg-000 {
+  background-color: #ffffff;
+}
+
+.bg-black {
+  background-color: #292929;
+}
+
+.bg-black-light {
+  background-color: #252632;
+}
+
+.bg-black-blue {
+  background-color: #1a1b25;
+}
+
+.bg-black-blue-light {
+  background-color: #1d212b;
+}
+
+.bg-black-blue-light-03 {
+  background-color: #111319;
+}
+
+.bg-content {
+  background-color: #111319cc;
+}
+
+// 阴影
+.bg-box-shadow {
+  box-shadow: 0px 6px 10px 1px #d4d4d4;
+}
+
+// 背景虚化
+.bg-virte {
+  background: rgba(0, 0, 0, 0.001);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+}
+
+.c-black {
+  color: #000;
+}
+
+.c-white {
+  color: #fff;
+}
+
+.c-primary {
+  color: #455fff;
+}
+
+.c-primary-el {
+  color: var(--el-color-primary);
+}
+
+.c-333 {
+  color: #333;
+}
+
+.c-666 {
+  color: #666;
+}
+
+.c-999 {
+  color: #999;
+}
+
+.c-gray {
+  color: #acacac;
+}
+
+.c-yellow {
+  color: #fec526;
+}
+
+.c-red {
+  color: #ff0000;
+}
+
+.c-green {
+  color: #26bd3b;
+}
+
+.f-w-s {
+  white-space: pre;
+}
+
+.f-b {
+  font-weight: bold;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.flex-col {
+  flex-wrap: wrap;
+}
+
+.flex-col-no {
+  flex-wrap: nowrap;
+}
+
+$i: 5;
+
+@while $i<=100 {
+  .flex-gap-#{$i} {
+    gap: #{$i}px;
+  }
+
+  $i: $i + 5;
+}
+
+// flex布局
+$flex: (
+  r: "row",
+  c: "column",
+  rr: "row-reverse",
+  cr: "column-reverse",
+);
+
+@each $key, $value in $flex {
+  .flex-#{$key} {
+    display: flex;
+    flex-direction: #{$value};
+  }
+}
+
+$jc: (
+  c: "center",
+  l: "left",
+  r: "right",
+  t: "top",
+  sb: "space-between",
+  fs: "flex-start",
+  fe: "flex-end",
+);
+
+@each $key, $value in $jc {
+  .flex-jc-#{$key} {
+    justify-content: #{$value};
+  }
+
+  .flex-ai-#{$key} {
+    align-items: #{$value};
+  }
+
+  .flex-ac-#{$key} {
+    align-content: #{$value};
+  }
+}
+
+// 设置字体
+$i: 12;
+
+@while $i<=100 {
+  .f-#{$i} {
+    font-size: #{$i}px;
+  }
+
+  $i: $i + 2;
+}
+
+// margin padding border
+$i: 0;
+$position: (
+  t: "top",
+  b: "bottom",
+  l: "left",
+  r: "right",
+);
+
+@while $i<=60 {
+  @each $key, $value in $position {
+    .m-#{$key}-#{$i} {
+      margin-#{$value}: #{$i}px;
+    }
+
+    .p-#{$key}-#{$i} {
+      padding-#{$value}: #{$i}px;
+    }
+  }
+
+  .m-#{$i} {
+    margin: #{$i}px;
+  }
+
+  .p-#{$i} {
+    padding: #{$i}px;
+  }
+
+  .brd-#{$i} {
+    border-radius: #{$i}px;
+  }
+
+  .p-0-#{$i} {
+    padding: 0 #{$i}+ "%";
+  }
+
+  $i: $i + 4;
+}
+
+// border-radius
+$i: 0;
+
+@while $i<=100 {
+  .brd-r-#{$i} {
+    border-radius: #{$i}+ "%";
+  }
+
+  .brd-r-px-#{$i} {
+    border-radius: #{$i}px;
+  }
+
+  $i: $i + 1;
+}
+
+// border
+$i: 1;
+$position: (
+  t: "top",
+  b: "bottom",
+  l: "left",
+  r: "right",
+);
+$color: (
+  b: "#000000",
+  w: "#ffffff",
+  g: "#acacac",
+  e: "#eeeeee",
+  de: "#dedede",
+  l: var(--el-border-color),
+);
+
+@while $i<=20 {
+  @each $key, $value in $position {
+    @each $c_key, $c_value in $color {
+      .b-#{$key}-#{$i}-#{$c_key} {
+        border-#{$value}: #{$i}px solid #{$c_value};
+      }
+
+      .b-#{$key}-#{$i}-#{$c_key}-50 {
+        border-#{$value}: #{$i}px solid #{$c_value + "50"};
+      }
+
+      .b-#{$i}-#{$c_key} {
+        border: #{$i}px solid #{$c_value};
+      }
+    }
+  }
+
+  $i: $i + 1;
+}
+
+.b-1 {
+  border: 1px solid #eee;
+}
+
+// width height padding 百分比
+$i: 5;
+
+@while $i<=100 {
+  .w-#{$i} {
+    width: #{$i}#{"%"};
+  }
+
+  .h-#{$i} {
+    height: #{$i}#{"%"};
+  }
+
+  $i: $i + 5;
+}
+
+// width height px
+$i: 5;
+
+@while $i<=2000 {
+  .w-px-#{$i} {
+    width: #{$i}px;
+  }
+
+  .h-px-#{$i} {
+    height: #{$i}px;
+  }
+
+  .w-px-min-#{$i} {
+    min-width: #{$i}px;
+  }
+
+  .w-px-max-#{$i} {
+    max-width: #{$i}px;
+  }
+
+  .h-px-min-#{$i} {
+    min-height: #{$i}px;
+  }
+
+  .h-px-max-#{$i} {
+    max-height: #{$i}px;
+  }
+
+  $i: $i + 5;
+}
+
+// line-height
+$i: 0;
+
+@while $i<=1000 {
+  .l-h-#{$i} {
+    line-height: #{$i}px;
+  }
+
+  $i: $i + 2;
+}
+
+// 通用hover改变颜色
+.hover-box-color:hover {
+  color: var(--el-color-warning);
+}
